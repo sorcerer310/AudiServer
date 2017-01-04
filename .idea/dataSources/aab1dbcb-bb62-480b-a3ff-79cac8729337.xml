@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - yys@114.215.101.20">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="yys">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="carshop"/>
+    <schema id="3" name="fydb"/>
+    <schema id="4" name="information_schema"/>
+    <schema id="5" name="mysql"/>
+    <schema id="6" name="performance_schema"/>
+    <schema id="7" name="tutorial"/>
+    <table id="8" parent="1" name="dungeon"/>
+    <table id="9" parent="1" name="map_monster"/>
+    <table id="10" parent="1" name="monster"/>
+    <column id="11" parent="8" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(8) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="12" parent="8" name="index">
+      <mandatory>1</mandatory>
+      <data-type>int(8)|0</data-type>
+    </column>
+    <column id="13" parent="8" name="name">
+      <comment>副本名称</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <key id="14" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="15" parent="9" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(8) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="16" parent="9" name="name">
+      <comment>地图上的怪物名称</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="17" parent="9" name="dungeon_id">
+      <comment>所在的地图</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(8) unsigned|0</data-type>
+    </column>
+    <key id="18" parent="9" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="19" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(8) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="20" parent="10" name="name">
+      <comment>怪物名字</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="21" parent="10" name="count">
+      <comment>副本中游走怪物包含的怪物数量</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(8) unsigned|0</data-type>
+    </column>
+    <column id="22" parent="10" name="map_monster_id">
+      <comment>对应的地图上的怪物的id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(8) unsigned|0</data-type>
+    </column>
+    <key id="23" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
