@@ -43,9 +43,6 @@ public class Service {
         int rkm = round28(kilometer);
 //            int rkm = Math.round((float) kilometer / 10000) * 10000;                                                         //四舍五入后的里程数
         try(DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
-
             boolean isp = isShowServicePrice(dsl);
 //            Stream<Record5<UInteger,BCarServiceServiceItem,UInteger,UInteger,Double>> s = dsl.select(B_CAR_TYPE.SERVICE_CAR_MODELS_ID, B_CAR_SERVICE.SERVICE_ITEM, B_CAR_SERVICE.START_KILOMETER
             Result<Record5<UInteger, BCarServiceServiceItem, UInteger, UInteger, Double>> result = dsl.select(B_CAR_TYPE.SERVICE_CAR_MODELS_ID, B_CAR_SERVICE.SERVICE_ITEM, B_CAR_SERVICE.START_KILOMETER
@@ -96,9 +93,6 @@ public class Service {
     public String getService(@QueryParam("car_type_id") int car_type_id) {
         JSONArray ja_list = new JSONArray();
         try(DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
-
             Result<Record5<UInteger, BCarServiceServiceItem, UInteger, UInteger, Double>> result = dsl.select(B_CAR_TYPE.SERVICE_CAR_MODELS_ID, B_CAR_SERVICE.SERVICE_ITEM, B_CAR_SERVICE.START_KILOMETER
                     , B_CAR_SERVICE.INTERVAL_KILOMETER, B_CAR_SERVICE.PRICE)
                     .from(B_CAR_TYPE).innerJoin(B_CAR_SERVICE)

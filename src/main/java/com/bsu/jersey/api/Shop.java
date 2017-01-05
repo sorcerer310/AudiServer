@@ -36,9 +36,6 @@ public class Shop {
     @Produces(MediaType.APPLICATION_JSON)
     public String getShop(@QueryParam("city_name") String city_name) {
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
-
             JSONArray ja_shop = dsl.selectFrom(B_CAR_DEALER)
                     .where(B_CAR_DEALER.CITY.like(city_name + "%"))
                     .fetch()

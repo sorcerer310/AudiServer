@@ -36,9 +36,6 @@ public class Car {
     @Produces(MediaType.APPLICATION_JSON)
     public String getCarByCity() {
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
-
             return JSONMsg.info(1000, dsl.selectFrom(B_CAR_TYPE)
                     .fetch()
                     .stream()
@@ -62,9 +59,6 @@ public class Car {
     @Produces(MediaType.APPLICATION_JSON)
     public String getBrand() {
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
-
             return JSONMsg.info(1000, dsl.selectDistinct(B_CAR_TYPE.BRAND)
                     .from(B_CAR_TYPE)
                     .fetch()
@@ -82,8 +76,6 @@ public class Car {
     @Produces(MediaType.APPLICATION_JSON)
     public String getCarModels(@QueryParam("brand") String brand) {
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
 
             //获得所有品牌类型
             Result<Record1<String>> r_brand_type = dsl.selectDistinct(B_CAR_TYPE.BRAND_TYPE)
@@ -125,8 +117,6 @@ public class Car {
                                  @QueryParam("year") String year) {
         if (year == null) year = "%";
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
 
             //根据车系获得该车系所有车的型号
             return JSONMsg.info(1000, dsl.select(B_CAR_TYPE.ID, B_CAR_TYPE.PRODUCT_NAME)
@@ -161,8 +151,6 @@ public class Car {
     private JSONArray orderBrandType(String brand, JSONArray ja) {
         JSONArray ja_new = new JSONArray();
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
 
             if (brand.equals("奥迪")) {
                 for (String sk : sortKey) {

@@ -29,8 +29,6 @@ public class City {
     @Produces(MediaType.APPLICATION_JSON)
     public String getCity() {
         try (DSLContext dsl = JooqMain.getDSLContext()) {
-//        try(CloseableJooq cj = JooqMain.getDSLConnection()){
-//            DSLContext dsl = cj.delegate();
 
             return JSONMsg.info(1000, dsl.selectDistinct(B_CAR_DEALER.CITY)
                     .from(B_CAR_DEALER)
